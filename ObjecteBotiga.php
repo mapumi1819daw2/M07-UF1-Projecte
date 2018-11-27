@@ -21,7 +21,7 @@ class Botiga{
 
 
     public function getNomBotiga(){
-        echo $this->nom;
+        return $this->nom;
     }
 
 

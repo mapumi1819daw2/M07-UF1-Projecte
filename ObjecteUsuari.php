@@ -11,12 +11,11 @@ class Usuari{
     private $cataleg;
 
 
-    public function  __construct($t, $name, $p){
-        $this->tipus = $t;
+    public function  __construct($name, $p){
         $this->name = $name;
         $this->pass = $p;
 
-       determinaUsuari();
+       $this->determinaUsuari();
 
         $this->cataleg = array();
     }
@@ -35,17 +34,17 @@ class Usuari{
 
 
     public function getTipus(){
-        echo $this->tipus;
+        return $this->tipus;
     }
 
 
 
     public function getName(){
-        echo $this->name;
+        return $this->name;
     }
 
     public function getPass(){
-        echo $this->pass;
+        return $this->pass;
     }
 
     /**
@@ -61,7 +60,7 @@ class Usuari{
 
     public function __toString()
     {
-        echo "[Usuari]: $this->tipus, $this->name , $this->pass";
+        echo "[Usuari]: $this->tipus, $this->name , $this->pass <BR>";
     }
 
 }

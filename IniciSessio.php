@@ -5,7 +5,9 @@
     <?php
 
         require_once("GestorUsuaris.php");
+        require_once("GestorProductes.php");
         require_once("ObjecteUsuari.php");
+        require_once("ObjecteProducte.php");
         
     
     ?>
@@ -23,7 +25,7 @@
 /* echo $_POST["nom"];
 echo $_POST["cognom"];  */ 
 
-       
+       $taula= null;
 
         $usuari = new Usuari($_POST["nom"], $_POST["cognom"]);
 
@@ -33,10 +35,24 @@ echo $_POST["cognom"];  */
         
             $trobat = $gestor->getTrobat();
 
-            if($trobat){
-                echo "Benvingut, ".$usuari->getName()."!";
 
-                echo "
+            $gestorProductes = new GestorProductes();
+
+            $lProductes = $gestorProductes->llegeixLlistaProductes();
+
+            
+
+            if($trobat){
+              /* Missatge de benvinguda */
+                echo "<h2>Benvingut, ".$usuari->getName()."!</h2>";
+
+                /* Cistell */
+                echo "<img id='cistell' src='/fotos/cistell.png'>";
+
+                /* Num productes */
+                echo "<a id='productes'>1</a>";
+
+                $taula= "
                 <html>
 
                 <head>
@@ -45,21 +61,33 @@ echo $_POST["cognom"];  */
 
                 <body>
 
-                <table style='width:100%'>
+                <table>
                 <tr>
-                  <th>Name:</th>
-                  <td>Bill Gates</td>
+                  <td>Nom</li>
+                  <td>Producte</li>
                 </tr>
-                <tr>
-                  <th rowspan='2'>Telephone:</th>
+                ";
+
+                foreach($lProductes as $p){
+                    $taula .= "<tr>
+                                <td class='producte'>".$p->getName()."</td>
+                                <td class='producte'><img src='".$p->getFoto()."'></td>
+                                </tr>";
+
+                }
+                  
+                $taula.="<!--<tr>
+                  
                   <td>55577854</td>
                 </tr>
                 <tr>
                   <td>55577855</td>
-                </tr>
+                </tr>-->
 
                 </body>
               </table>";
+
+              echo $taula;
             }
 
 

@@ -15,11 +15,11 @@ class Producte{
 
 
     public function getName(){
-        echo $this->name;
+        return $this->name;
     }
 
     public function getFoto(){
-        echo $this->foto;
+        return $this->foto;
     }
 
 

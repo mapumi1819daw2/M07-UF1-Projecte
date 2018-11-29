@@ -1,4 +1,39 @@
+h2{
+    background-color: #30A6E6;
+    color: white;
+
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 45%;
+}
+
+
+#cistell{
+
+    position: absolute;
+    top: 2%;
+    right: 10%;
+    width: 3%;
+
+}
+
+#productes{
+    position: absolute;
+    top: 7%;
+    color: red;
+    right: 10%;
+    font-size: 110%;
+}
+
+
 table{
     position: absolute;
     top: 50%;
+    width: 50%;
+    left: 30%;
+}
+
+
+.producte{
+    cursor: pointer;
 }

@@ -8,6 +8,8 @@
         require_once("GestorProductes.php");
         require_once("ObjecteUsuari.php");
         require_once("ObjecteProducte.php");
+
+        
         
     
     ?>
@@ -32,62 +34,30 @@ echo $_POST["cognom"];  */
 
    
         $gestor = new GestorUsuaris($usuari); 
+
+     /*    echo  GestorUsuaris::selfUsuari();
+        echo $usu->__toString(); */
+
+        
         
             $trobat = $gestor->getTrobat();
 
 
-            $gestorProductes = new GestorProductes();
-
-            $lProductes = $gestorProductes->llegeixLlistaProductes();
+            
 
             
 
             if($trobat){
+
+              print '<META HTTP-EQUIV="refresh" CONTENT="1;URL=./Privat.php">';
+
+              $_SESSION["acces"]=1;
               /* Missatge de benvinguda */
-                echo "<h2>Benvingut, ".$usuari->getName()."!</h2>";
+                
+            }
 
-                /* Cistell */
-                echo "<img id='cistell' src='/fotos/cistell.png'>";
-
-                /* Num productes */
-                echo "<a id='productes'>1</a>";
-
-                $taula= "
-                <html>
-
-                <head>
-                <link rel='stylesheet' type='text/css' href='estil.css'>
-                </head>
-
-                <body>
-
-                <table>
-                <tr>
-                  <td>Nom</li>
-                  <td>Producte</li>
-                </tr>
-                ";
-
-                foreach($lProductes as $p){
-                    $taula .= "<tr>
-                                <td class='producte'>".$p->getName()."</td>
-                                <td class='producte'><img src='".$p->getFoto()."'></td>
-                                </tr>";
-
-                }
-                  
-                $taula.="<!--<tr>
-                  
-                  <td>55577854</td>
-                </tr>
-                <tr>
-                  <td>55577855</td>
-                </tr>-->
-
-                </body>
-              </table>";
-
-              echo $taula;
+            else{
+              echo "Usuari o contrasenya incorrectes";  
             }
 
 

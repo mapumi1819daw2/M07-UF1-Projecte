@@ -1,9 +1,12 @@
 <?php
+session_start();
 
 
+
+    require_once("ObjecteUsuari.php");
     class GestorUsuaris{
         
-        private $usuariActiu;
+        public static $usuariActiu;
         private $contrasenyaUsuariActiu;
         private $NomArxiuUsuaris;
 
@@ -25,6 +28,10 @@
             }
         }
 
+        public function selfUsuari(){
+            echo self::$usuariActiu;
+        }
+
 
 
         public function getTrobat(){
@@ -38,19 +45,28 @@
             
             
             foreach($this->usuarisCSV as $u){
-                if(!strcmp($u->getName(), $usuari->getName())){
-                    /* echo "L'usuari: ".$usuari->getName()." existeix!"; */
-                    if(!strcmp($u->getPass(), $usuari->getPass())){
-                        /* echo "<BR><BR>La contrasenya coincideix!"; */
+                if($u == $usuari){
+                    echo "Iguals";
+                    $_SESSION["nom"] = $usuari->getName();
+                    $this->trobat = true;
+                }
 
-                        $this->trobat = true;
+                else{
+                    
+                }
+                /* if(!strcmp($u->getName(), $usuari->getName())){
+                    
+                    if(!strcmp($u->getPass(), $usuari->getPass())){
+                        
+                        $GLOBALS['actiu'] = "u";
+                        
                     }
                     else{
                         echo "<BR><BR>La contrasenya és incorrecta o no coincideix!";
                     }
 
                     
-                }
+            }*/
 
                 /* else{
                     echo  "L'usuari: ".$usuari->getName()." no existeix!";
@@ -72,6 +88,8 @@
             }
 
             fclose($file);
+
+            
         }
     }
 

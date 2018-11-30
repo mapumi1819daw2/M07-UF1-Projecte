@@ -16,14 +16,23 @@ session_start();
 <h2>Comanda</h2>
 <p>Client: <?php echo $_SESSION["nom"]?></p>
 
-<h2>Productes: <?php echo $_SESSION["q"] ?> </h2>
+<h2 id="p">Productes:  </h2>
 
 
-<?php
-echo "<img src='".$_SESSION[0].".JPG'><BR><BR>";
- for ($i=0; $i <$_SESSION["q"] ; $i++){
-    echo "<img src='".$_SESSION[$i].".JPG'><BR><BR>";
-}?>
+<script tye="text/javascript">
+
+    $("#p").append(sessionStorage.getItem("q"));
+
+    var t = sessionStorage.getItem("q");
+
+    for(var i=0; i<t; i++){
+        $("body").append("<img src='"+sessionStorage.getItem(i)+"'>");
+    }
+
+    
+</script>
+
+
 
 
 

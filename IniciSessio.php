@@ -24,29 +24,16 @@
     
         <?php
 
-/* echo $_POST["nom"];
-echo $_POST["cognom"];  */ 
-
        $taula= null;
 
         $usuari = new Usuari($_POST["nom"], $_POST["cognom"]);
 
 
-   
-        $gestor = new GestorUsuaris($usuari); 
-
-     /*    echo  GestorUsuaris::selfUsuari();
-        echo $usu->__toString(); */
-
-        
-        
+            /**Comprovem que l'usuari existeix */
+            $gestor = new GestorUsuaris($usuari); 
             $trobat = $gestor->getTrobat();
-
-
-            
-
-            
-
+       
+            /**En cas d'existir redirigim a l'espai privat */
             if($trobat){
 
               print '<META HTTP-EQUIV="refresh" CONTENT="1;URL=./Privat.php">';
@@ -57,7 +44,8 @@ echo $_POST["cognom"];  */
             }
 
             else{
-              echo "Usuari o contrasenya incorrectes";  
+              echo "Usuari o contrasenya incorrectes"; 
+              print '<META HTTP-EQUIV="refresh" CONTENT="1;URL=./Principal.html">';
             }
 
 

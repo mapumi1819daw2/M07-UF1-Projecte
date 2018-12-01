@@ -39,18 +39,24 @@ require_once("GestorProductes.php");
             
             $gestorProductes = new GestorProductes();
 
+            /**Obtenim llista de productes */
             $lProductes = $gestorProductes->llegeixLlistaProductes();
 
-            $usuari = new GestorUsuaris();
-            $usuariActiu = $usuari->selfUsuari();
+            
             echo "<h2>Benvingut ".$_SESSION["nom"]."!</h2>";
 
                 /* Cistell */
-                echo "<img id='cistell' src='/fotos/cistell.png'>";
+                echo "<form method='POST' action='comanda.php'>
+                
+                
+                ";
+                
 
                 /* Num productes */
                 echo "<a id='productes'>0</a>";
 
+
+                /**Taula productes */
                 $taula= "
                 <table>
                 <tr>
@@ -63,6 +69,7 @@ require_once("GestorProductes.php");
                     $taula .= "<tr id='f".$p->getName()."'>
                                 <td class='producte'>".$p->getName()."</td>
                                 <td id='".$p->getName()."' class='producte'><img src='".$p->getFoto()."'></td>
+                                <td><input id='c".$p->getName()."' name='".$p->getName()."' type='checkbox'/></td>
                                 </tr>";
 
                 }
@@ -76,7 +83,7 @@ require_once("GestorProductes.php");
                 </tr>-->
 
                 
-              </table>";
+              </table><input type='submit' value='comanda'><img id='cistell' src='/fotos/cistell.png'></input></form>";
 
               echo $taula;
         ?>

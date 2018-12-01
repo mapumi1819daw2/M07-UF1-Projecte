@@ -54,23 +54,7 @@ session_start();
                 else{
                     
                 }
-                /* if(!strcmp($u->getName(), $usuari->getName())){
-                    
-                    if(!strcmp($u->getPass(), $usuari->getPass())){
-                        
-                        $GLOBALS['actiu'] = "u";
-                        
-                    }
-                    else{
-                        echo "<BR><BR>La contrasenya és incorrecta o no coincideix!";
-                    }
-
-                    
-            }*/
-
-                /* else{
-                    echo  "L'usuari: ".$usuari->getName()." no existeix!";
-                } */
+                
                 
             }
 
